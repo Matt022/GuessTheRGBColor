@@ -4,15 +4,15 @@
         <h2>Your result guess will be shown here</h2>
         <br>
         <div class="guess">
-            <div class="color-guess">
+            <div class="color-guess" [style.backgroundColor]="userGuessColor">
 
             </div>
             <div class="input-guess">
-                <input type="number" name="" id="" placeholder="red">
-                <input type="number" name="" id="" placeholder="green">
-                <input type="number" name="" id="" placeholder="blue">
+                <input type="number" [(ngModel)]="red" id="red" placeholder="red">
+                <input type="number" [(ngModel)]="green" id="green" placeholder="green">
+                <input type="number" [(ngModel)]="blue" id="blue" placeholder="blue">
             </div>
-            <button type="button">Guess the color!</button>
+            <button type="button" (click)="guess()">Guess the color!</button>
         </div>
     </section>
 
@@ -20,7 +20,7 @@
         <h2>Guess this color</h2>
         <br>
         <div class="result">
-            <div class="color-guess" [style.backgroundColor]="backgroundColor">
+            <div class="color-guess" [style.backgroundColor]="randomizedColor">
 
             </div>
             <div class="input-guess">
