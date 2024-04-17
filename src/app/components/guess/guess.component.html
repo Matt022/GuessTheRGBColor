@@ -20,7 +20,7 @@
         <h2>Guess this color</h2>
         <br>
         <div class="result">
-            <div class="color-guess">
+            <div class="color-guess" [style.backgroundColor]="backgroundColor">
 
             </div>
             <div class="input-guess">
@@ -28,7 +28,7 @@
                 <input type="number" name="" id="" placeholder="green" disabled>
                 <input type="number" name="" id="" placeholder="blue" disabled>
             </div>
-            <button type="button">Randomize</button>
+            <button type="button" (click)="randomize()">Randomize</button>
         </div>
     </section>
 </div>
