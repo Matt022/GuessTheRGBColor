@@ -1,4 +1,6 @@
-<h2>Guess the color!</h2>
+<h2 class="main">Guess the RGB color!</h2>
+<hr>
+<h3 class="main" *ngIf="show">{{count}}</h3>
 <div class="holder">
     <section class="first">
         <h2>Your result guess will be shown here</h2>
@@ -15,6 +17,8 @@
             <button type="button" (click)="guess()">Guess the color!</button>
         </div>
     </section>
+
+    <h2 class="main">Your score: {{yourScore}}</h2>
 
     <section class="second">
         <h2>Guess this color</h2>
