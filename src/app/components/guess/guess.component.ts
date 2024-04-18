@@ -46,9 +46,6 @@ export class GuessComponent {
 
     guess(): void {
         setTimeout(() => {
-            this.guessRed = this._red;
-            this.guessGreen = this._green;
-            this.guessBlue = this._blue;
             this.userGuessColor = `rgb(${this.userRed}, ${this.userGreen}, ${this.userBlue})`;
 
             this.show = true;
@@ -56,11 +53,17 @@ export class GuessComponent {
             this.subscription = interval(1000).subscribe(() => {
                 if (this.count > 0) {
                     this.count--;
+
+                    if (this.count === 0) {
+                        this.guessRed = this._red;
+                        this.guessGreen = this._green;
+                        this.guessBlue = this._blue;
+                        this.yourScore = 100;
+                    }
                 }
             });
-        }, 3000);
+        }, 1000);
 
-        this.yourScore = 100;
     }
 
     ngOnDestroy(): void {
