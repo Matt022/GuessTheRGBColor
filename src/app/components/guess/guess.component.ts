@@ -1,26 +1,54 @@
-import { Component } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'app-guess',
     templateUrl: './guess.component.html',
-    styleUrls: ['./guess.component.scss']
+    styleUrls: ['./guess.component.scss'],
+    animations: [
+        trigger('countAnimation', [
+            state('*', style({ opacity: 1 })),
+            transition(':enter', animate('1s ease-in-out', style({ opacity: 1 }))),
+        ]),
+    ],
 })
-export class GuessComponent {
+export class GuessComponent implements OnChanges {
     randomizedColor: string = 'rgb(255, 255, 255)';
     userGuessColor: string = 'rgb(255, 255, 255)';
 
-    red!: number;
-    green!: number;
-    blue!: number;
+    userRed!: number;
+    userGreen!: number;
+    userBlue!: number;
+
+    guessRed!: number;
+    guessGreen!: number;
+    guessBlue!: number;
+
+    private _red: number = 0;
+    private _green: number = 0;
+    private _blue: number = 0;
 
     randomize(): void {
-        const red: number = Math.floor(Math.random() * 256);
-        const green: number = Math.floor(Math.random() * 256);
-        const blue: number = Math.floor(Math.random() * 256);
-        this.randomizedColor = `rgb(${red}, ${green}, ${blue})`;
+        this._red = Math.floor(Math.random() * 256);
+        this._green = Math.floor(Math.random() * 256);
+        this._blue = Math.floor(Math.random() * 256);
+        this.randomizedColor = `rgb(${this._red}, ${this._green}, ${this._blue})`;
     };
 
     guess(): void {
-        this.userGuessColor = `rgb(${this.red}, ${this.green}, ${this.blue})`;
+        this.userGuessColor = `rgb(${this.userRed}, ${this.userGreen}, ${this.userBlue})`;
+        setTimeout(() => {
+            this.guessRed = this._red;
+            this.guessGreen = this._green;
+            this.guessBlue = this._blue;
+        }, 3000);
+    }
+
+    @Input() count: number = 0;
+
+    ngOnChanges(): void {
+        if (this.count < 100) {
+            this.count++;
+        }
     }
 }

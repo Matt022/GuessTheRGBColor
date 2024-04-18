@@ -8,9 +8,9 @@
 
             </div>
             <div class="input-guess">
-                <input type="number" [(ngModel)]="red" id="red" placeholder="red">
-                <input type="number" [(ngModel)]="green" id="green" placeholder="green">
-                <input type="number" [(ngModel)]="blue" id="blue" placeholder="blue">
+                <input type="number" [(ngModel)]="userRed" id="red" placeholder="red">
+                <input type="number" [(ngModel)]="userGreen" id="green" placeholder="green">
+                <input type="number" [(ngModel)]="userBlue" id="blue" placeholder="blue">
             </div>
             <button type="button" (click)="guess()">Guess the color!</button>
         </div>
@@ -24,9 +24,9 @@
 
             </div>
             <div class="input-guess">
-                <input type="number" name="" id="" placeholder="red" disabled>
-                <input type="number" name="" id="" placeholder="green" disabled>
-                <input type="number" name="" id="" placeholder="blue" disabled>
+                <input type="number" id="guess-red" [(ngModel)]="guessRed" placeholder="red" disabled>
+                <input type="number" id="guess-green" [(ngModel)]="guessGreen" placeholder="green" disabled>
+                <input type="number" id="guess-blue" [(ngModel)]="guessBlue" placeholder="blue" disabled>
             </div>
             <button type="button" (click)="randomize()">Randomize</button>
         </div>
