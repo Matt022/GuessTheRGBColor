@@ -1,18 +1,11 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-guess',
     templateUrl: './guess.component.html',
-    styleUrls: ['./guess.component.scss'],
-    animations: [
-        trigger('countAnimation', [
-            state('*', style({ opacity: 1 })),
-            transition(':enter', animate('1s ease-in-out', style({ opacity: 1 }))),
-        ]),
-    ],
+    styleUrls: ['./guess.component.scss']
 })
-export class GuessComponent implements OnChanges {
+export class GuessComponent {
     randomizedColor: string = 'rgb(255, 255, 255)';
     userGuessColor: string = 'rgb(255, 255, 255)';
 
@@ -42,13 +35,5 @@ export class GuessComponent implements OnChanges {
             this.guessGreen = this._green;
             this.guessBlue = this._blue;
         }, 3000);
-    }
-
-    @Input() count: number = 0;
-
-    ngOnChanges(): void {
-        if (this.count < 100) {
-            this.count++;
-        }
     }
 }
