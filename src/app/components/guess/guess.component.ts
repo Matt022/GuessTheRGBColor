@@ -27,7 +27,7 @@ export class GuessComponent implements OnDestroy {
     count: number = 3;
     show: boolean = false;
 
-    private subscription: Subscription | undefined;
+    private subscription: Subscription | undefined | null;
 
     randomize(): void {
         this._red = Math.floor(Math.random() * 256);
@@ -37,6 +37,8 @@ export class GuessComponent implements OnDestroy {
     };
 
     guess(): void {
+        this.count = 3;
+
         setTimeout(() => {
 
             this.show = true;
@@ -58,8 +60,6 @@ export class GuessComponent implements OnDestroy {
                 }
             });
         }, 1000);
-
-        this.subscription?.unsubscribe();
     }
 
     private countScore(): number {
@@ -88,6 +88,14 @@ export class GuessComponent implements OnDestroy {
 
     resetScore(): void {
         this.yourScore = 0;
+    }
+
+    nextGuess(): void {
+        this.subscription = null;
+        this.guessRed = 0;
+        this.guessGreen = 0;
+        this.guessBlue = 0;
+        this.randomize();
     }
 
     ngOnDestroy(): void {
