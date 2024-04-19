@@ -11,13 +11,13 @@ export class GuessComponent implements OnDestroy {
     randomizedColor: string = 'rgb(255, 255, 255)';
     userGuessColor: string = 'rgb(255, 255, 255)';
 
-    userRed!: number;
-    userGreen!: number;
-    userBlue!: number;
+    userRed!: number | string;
+    userGreen!: number | string;
+    userBlue!: number | string;
 
-    guessRed!: number;
-    guessGreen!: number;
-    guessBlue!: number;
+    guessRed!: number | string;
+    guessGreen!: number | string;
+    guessBlue!: number | string;
 
     private _red: number = 0;
     private _green: number = 0;
@@ -40,7 +40,6 @@ export class GuessComponent implements OnDestroy {
         this.count = 3;
 
         setTimeout(() => {
-
             this.show = true;
 
             this.subscription = interval(1000).subscribe(() => {
@@ -65,22 +64,22 @@ export class GuessComponent implements OnDestroy {
     private countScore(): number {
         let score: number = 0;
 
-        if (this._red > this.userRed) {
-            score += this._red - this.userRed;
-        } else if (this._red < this.userRed) {
-            score += this.userRed - this._red;
+        if (+this._red > +this.userRed) {
+            score += +this._red - +this.userRed;
+        } else if (+this._red < +this.userRed) {
+            score += +this.userRed - +this._red;
         }
 
-        if (this._green > this.userGreen) {
-            score += this._green - this.userGreen;
-        } else if (this._green < this.userGreen) {
-            score += this.userGreen - this._green;
+        if (+this._green > +this.userGreen) {
+            score += this._green - +this.userGreen;
+        } else if (+this._green < +this.userGreen) {
+            score += +this.userGreen - +this._green;
         }
 
-        if (this._blue > this.userBlue) {
-            score += this._blue - this.userBlue;
-        } else if (this._blue < this.userBlue) {
-            score += this.userBlue - this._blue;
+        if (+this._blue > +this.userBlue) {
+            score += +this._blue - +this.userBlue;
+        } else if (+this._blue < +this.userBlue) {
+            score += +this.userBlue - +this._blue;
         }
 
         return score;
@@ -92,9 +91,17 @@ export class GuessComponent implements OnDestroy {
 
     nextGuess(): void {
         this.subscription = null;
-        this.guessRed = 0;
-        this.guessGreen = 0;
-        this.guessBlue = 0;
+
+        this.guessRed = "";
+        this.guessGreen = "";
+        this.guessBlue = "";
+
+        this.userRed = "";
+        this.userGreen = "";
+        this.userBlue = "";
+
+        this.userGuessColor = 'rgb(255, 255, 255)';
+
         this.randomize();
     }
 
