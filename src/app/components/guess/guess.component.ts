@@ -49,9 +49,10 @@ export class GuessComponent implements OnDestroy {
                         this.guessRed = this._red;
                         this.guessGreen = this._green;
                         this.guessBlue = this._blue;
-                        
+
                         this.userGuessColor = `rgb(${this.userRed}, ${this.userGreen}, ${this.userBlue})`;
-                        this.yourScore = 100;
+
+                        this.yourScore += this.countScore();
                         this.show = false;
                     }
                 }
@@ -59,6 +60,34 @@ export class GuessComponent implements OnDestroy {
         }, 1000);
 
         this.subscription?.unsubscribe();
+    }
+
+    private countScore(): number {
+        let score: number = 0;
+
+        if (this._red > this.userRed) {
+            score += this._red - this.userRed;
+        } else if (this._red < this.userRed) {
+            score += this.userRed - this._red;
+        }
+
+        if (this._green > this.userGreen) {
+            score += this._green - this.userGreen;
+        } else if (this._green < this.userGreen) {
+            score += this.userGreen - this._green;
+        }
+
+        if (this._blue > this.userBlue) {
+            score += this._blue - this.userBlue;
+        } else if (this._blue < this.userBlue) {
+            score += this.userBlue - this._blue;
+        }
+
+        return score;
+    }
+
+    resetScore(): void {
+        this.yourScore = 0;
     }
 
     ngOnDestroy(): void {

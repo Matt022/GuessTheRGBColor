@@ -36,3 +36,8 @@
         </div>
     </section>
 </div>
+<hr>
+<div class="reset-buttons">
+    <button type="button" [disabled]="yourScore == 0" (click)="resetScore()">Reset score</button>
+    <button type="button">Next guess</button>
+</div>
