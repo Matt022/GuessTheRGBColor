@@ -26,7 +26,6 @@ div.holder {
 
     section.first {
         div.guess {
-            // border: 1px solid rgb(39, 36, 36);
             border-radius: 10px;
             height: 70%;
             margin-left: 20px;
@@ -57,20 +56,23 @@ div.holder {
             }
 
             button {
-                width: 250px;
+                min-width: 250px;
                 margin: auto;
                 padding: 5px 10px;
                 cursor: pointer;
-                background-color: rgb(0, 140, 255);
-                color: aliceblue;
+                background-color: #ffffff;
+                color: #1A0B30;
                 font-weight: bold;
                 font-size: 25px;
                 border-radius: 8px;
                 border: 0;
                 transition: all 0.3s ease-in-out;
 
+                display: flex;
+                align-items: center;
+
                 &:hover {
-                    background-color: rgb(1, 122, 221);
+                    background-color: #ececec;
                     transform: scale(1.01);
                 }
             }
@@ -79,7 +81,6 @@ div.holder {
 
     section.second {
         div.result {
-            // border: 1px solid rgb(39, 36, 36);
             border-radius: 10px;
             height: 70%;
             margin-right: 20px;
@@ -110,20 +111,24 @@ div.holder {
             }
 
             button {
-                width: 200px;
+                min-width: 200px;
                 margin: auto;
                 padding: 5px 10px;
                 cursor: pointer;
-                background-color: rgb(0, 140, 255);
-                color: aliceblue;
+                background-color: #ffffff;
+                color: #1A0B30;
                 font-weight: bold;
                 font-size: 25px;
                 border-radius: 8px;
                 border: 0;
                 transition: all 0.3s ease-in-out;
 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
                 &:hover {
-                    background-color: rgb(1, 122, 221);
+                    background-color: #ececec;
                     transform: scale(1.01);
                 }
             }
@@ -143,16 +148,20 @@ div.reset-buttons {
         width: 250px;
         padding: 5px 10px;
         cursor: pointer;
-        background-color: rgb(0, 140, 255);
-        color: aliceblue;
+        background-color: #ffffff;
+        color: #1A0B30;
         font-weight: bold;
         font-size: 25px;
         border-radius: 8px;
         border: 0;
         transition: all 0.3s ease-in-out;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         &:hover {
-            background-color: rgb(1, 122, 221);
+            background-color: #ececec;
             transform: scale(1.01);
         }
     }

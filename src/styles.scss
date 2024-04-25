@@ -3,3 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.text-white {
+    color: white;
+    font-weight: 500;
+}
+
+.back-red {
+    background-color: rgb(226, 27, 27);
+    color: black;
+}
+
+.back-green {
+    background-color: rgb(34, 226, 27);
+    color: black;
+}
+
+.back-blue {
+    background-color: rgb(40, 27, 226);
+    color: rgb(255, 255, 255);
+}

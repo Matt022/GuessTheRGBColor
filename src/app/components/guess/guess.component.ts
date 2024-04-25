@@ -26,6 +26,7 @@ export class GuessComponent implements OnDestroy {
     yourScore: number = 0;
     count: number = 3;
     show: boolean = false;
+    allowToGuess: boolean = true;
 
     private subscription: Subscription | undefined | null;
 
@@ -34,6 +35,7 @@ export class GuessComponent implements OnDestroy {
         this._green = Math.floor(Math.random() * 256);
         this._blue = Math.floor(Math.random() * 256);
         this.randomizedColor = `rgb(${this._red}, ${this._green}, ${this._blue})`;
+        this.allowToGuess = false;
     };
 
     guess(): void {
@@ -87,6 +89,7 @@ export class GuessComponent implements OnDestroy {
 
     resetScore(): void {
         this.yourScore = 0;
+        this.randomize();   
     }
 
     nextGuess(): void {
