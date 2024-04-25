@@ -1,6 +1,5 @@
 <h2 class="main">Guess the RGB color!</h2>
 <hr>
-<h3 class="main" *ngIf="show">{{count}}</h3>
 <div class="holder">
     <section class="first">
         <h2 class="text-white">Your result guess will be shown here</h2>
@@ -14,11 +13,15 @@
                 <input type="number" class="back-green" [(ngModel)]="userGreen" id="green" placeholder="green">
                 <input type="number" class="back-blue" [(ngModel)]="userBlue" id="blue" placeholder="blue">
             </div>
-            <button type="button" (click)="guess()" [disabled]="allowToGuess"><img src="../../../assets/icons/Search.svg" alt="search">&nbsp; Guess the color!</button>
+            <button type="button" (click)="guess()" [disabled]="allowToGuess"><img
+                    src="../../../assets/icons/Search.svg" alt="search">&nbsp; Guess the color!</button>
         </div>
     </section>
 
-    <h2 class="main text-white">Your score: {{yourScore}}</h2>
+    <section class="middle">
+        <h2 class="main text-white">Your score: {{yourScore}}</h2>
+        <h3 class="main" *ngIf="show">{{count}}</h3>
+    </section>
 
     <section class="second">
         <h2 class="text-white">Guess this color!</h2>
@@ -29,15 +32,20 @@
             </div>
             <div class="input-guess">
                 <input type="number" class="back-red" id="guess-red" [(ngModel)]="guessRed" placeholder="red" disabled>
-                <input type="number" class="back-green" id="guess-green" [(ngModel)]="guessGreen" placeholder="green" disabled>
-                <input type="number" class="back-blue" id="guess-blue" [(ngModel)]="guessBlue" placeholder="blue" disabled>
+                <input type="number" class="back-green" id="guess-green" [(ngModel)]="guessGreen" placeholder="green"
+                    disabled>
+                <input type="number" class="back-blue" id="guess-blue" [(ngModel)]="guessBlue" placeholder="blue"
+                    disabled>
             </div>
-            <button type="button" (click)="randomize()"><img src="../../../assets/icons/Randomize.svg" alt="randomize"> &nbsp; Randomize</button>
+            <button type="button" (click)="randomize()"><img src="../../../assets/icons/Randomize.svg" alt="randomize">
+                &nbsp; Randomize</button>
         </div>
     </section>
 </div>
 <hr>
 <div class="reset-buttons">
-    <button type="button" [disabled]="yourScore == 0" (click)="resetScore()"><img src="../../../assets/icons/Column 01 Up.svg" alt="reset-score"> &nbsp; Reset score</button>
-    <button type="button" (click)="nextGuess()"><img src="../../../assets/icons/Next.svg" alt="next-guess"> &nbsp; Next guess</button>
+    <button type="button" [disabled]="yourScore == 0" (click)="resetScore()"><img
+            src="../../../assets/icons/Column 01 Up.svg" alt="reset-score"> &nbsp; Reset score</button>
+    <button type="button" (click)="nextGuess()"><img src="../../../assets/icons/Next.svg" alt="next-guess"> &nbsp; Next
+        guess</button>
 </div>

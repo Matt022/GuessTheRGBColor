@@ -79,6 +79,11 @@ div.holder {
         }
     }
 
+    section.middle {
+        // border: 1px solid red;
+        justify-content: space-around;
+    }
+
     section.second {
         div.result {
             border-radius: 10px;

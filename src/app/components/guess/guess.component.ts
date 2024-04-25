@@ -19,33 +19,35 @@ export class GuessComponent implements OnDestroy {
     guessGreen!: number | string;
     guessBlue!: number | string;
 
-    private _red: number = 0;
-    private _green: number = 0;
-    private _blue: number = 0;
+    private _red: number | string = 0;
+    private _green: number | string = 0;
+    private _blue: number | string = 0;
 
     yourScore: number = 0;
     count: number = 3;
-    show: boolean = false;
+    show: boolean = true;
     allowToGuess: boolean = true;
 
     private subscription: Subscription | undefined | null;
 
     randomize(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+
         this._red = Math.floor(Math.random() * 256);
         this._green = Math.floor(Math.random() * 256);
         this._blue = Math.floor(Math.random() * 256);
         this.randomizedColor = `rgb(${this._red}, ${this._green}, ${this._blue})`;
         this.allowToGuess = false;
+        this.count = 4;
     };
 
     guess(): void {
-        this.count = 3;
-
         setTimeout(() => {
             this.show = true;
-
             this.subscription = interval(1000).subscribe(() => {
-                if (this.count > 0) {
+                if (this.count > 0 && this.show) {
                     this.count--;
 
                     if (this.count === 0) {
@@ -61,6 +63,10 @@ export class GuessComponent implements OnDestroy {
                 }
             });
         }, 1000);
+
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 
     private countScore(): number {
@@ -73,7 +79,7 @@ export class GuessComponent implements OnDestroy {
         }
 
         if (+this._green > +this.userGreen) {
-            score += this._green - +this.userGreen;
+            score += +this._green - +this.userGreen;
         } else if (+this._green < +this.userGreen) {
             score += +this.userGreen - +this._green;
         }
@@ -89,7 +95,7 @@ export class GuessComponent implements OnDestroy {
 
     resetScore(): void {
         this.yourScore = 0;
-        this.randomize();   
+        this.randomize();
     }
 
     nextGuess(): void {
@@ -102,6 +108,10 @@ export class GuessComponent implements OnDestroy {
         this.userRed = "";
         this.userGreen = "";
         this.userBlue = "";
+
+        this._red = "";
+        this._green = "";
+        this._blue = "";
 
         this.userGuessColor = 'rgb(255, 255, 255)';
 
