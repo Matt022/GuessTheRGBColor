@@ -25,7 +25,7 @@ export class GuessComponent implements OnDestroy {
 
     yourScore: number = 0;
     count: number = 3;
-    show: boolean = true;
+    show: boolean = false;
     allowToGuess: boolean = true;
 
     private subscription: Subscription | undefined | null;
@@ -35,15 +35,18 @@ export class GuessComponent implements OnDestroy {
             this.subscription.unsubscribe();
         }
 
+        this.reset();
+
         this._red = Math.floor(Math.random() * 256);
         this._green = Math.floor(Math.random() * 256);
         this._blue = Math.floor(Math.random() * 256);
         this.randomizedColor = `rgb(${this._red}, ${this._green}, ${this._blue})`;
-        this.allowToGuess = false;
         this.count = 4;
     };
 
     guess(): void {
+        this.allowToGuess = false;
+
         setTimeout(() => {
             this.show = true;
             this.subscription = interval(1000).subscribe(() => {
@@ -59,6 +62,7 @@ export class GuessComponent implements OnDestroy {
 
                         this.yourScore += this.countScore();
                         this.show = false;
+                        this.allowToGuess = true;
                     }
                 }
             });
@@ -100,7 +104,11 @@ export class GuessComponent implements OnDestroy {
 
     nextGuess(): void {
         this.subscription = null;
+        this.reset();
+        this.randomize();
+    }
 
+    private reset(): void {
         this.guessRed = "";
         this.guessGreen = "";
         this.guessBlue = "";
@@ -114,8 +122,6 @@ export class GuessComponent implements OnDestroy {
         this._blue = "";
 
         this.userGuessColor = 'rgb(255, 255, 255)';
-
-        this.randomize();
     }
 
     ngOnDestroy(): void {
