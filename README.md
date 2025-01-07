@@ -1,27 +1,22 @@
-# GuessTheRGBColor
+# GuessTheRGBColor Game
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+This project is game about guessing the RGB color for designers.
 
-## Development server
+## What is this game about and how to play this game?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+On the right side you can generate the RGB color. It is just randomize the color. When we get some RGB color, our task is guess the color on left side.
+As RGB color has three colors (red, green, blue) we can see three inputs for those numbers from 0 to 255 for each value.
 
-## Code scaffolding
+After evaluating the results, the median between each RGB color value is calculated, so we have 3 medians, then they are added together and the score comes out.
+Less score, better you are.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The aim of the game is to guess the generated color as accurately as possible. Of course there is very low percentage that someone will guess it exactly and that's the point.
+Challenge yourself how you know RGB colors!
 
-## Build
+## Future plans with this project
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+In the future, I want to add backend to that project for saving highest or at this point the lowest score and authorize the users.
 
-## Running unit tests
+## Where to play this game?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+You play this game on this link: https://matts-rgb-color-game.netlify.app/
